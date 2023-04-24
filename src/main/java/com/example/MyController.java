@@ -16,9 +16,9 @@ import lombok.NoArgsConstructor;
 /**
  * Jakarta MVCのコンロトーラクラスです。@Controllerアノテーションを付けましょう。
  * 
- * コントローラクラスはCDI管理Beanであることが必須で、必ず@RequestScopedを付けます。
+ * コントローラクラスはCDI beanであることが必須で、必ず@RequestScopedを付けます。
  * 
- * CDI管理Beanには引数のないコンストラクタが必須なので、
+ * CDI beanには引数のないコンストラクタが必須なので、
  * Lombokの@NoArgsConstructorで空っぽのコンストラクタを作成します。
  * ただし、このクラスは宣言時に初期化してないfinalフィールドを持つため、
  * このままだとフィールドが初期化されない可能性があってコンパイルエラーとなります。

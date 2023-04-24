@@ -17,12 +17,12 @@ import jakarta.json.bind.JsonbBuilder;
  * MessagesはArrayListを継承するリストクラスです。
  */
 /**
- * @ApplicationScoped アノテーションを付けることで、CDI管理Beanとして宣言しています。
+ * @ApplicationScoped アノテーションを付けることで、CDI beanとして宣言しています。
  * このクラスのインスタンスのライフサイクルは、
  * Application Scope（アプリが起動してから終了するまで）となります。
  */
 /**
- * CDI管理Beanに名前を付ける場合、@Namedアノテーションを用います。
+ * CDI beanに名前を付ける場合、@Namedアノテーションを用います。
  * 例えば、@Named("FOO")と付けると"FOO"という名前になりますが、
  * 引数を省略すると、クラス名の先頭を小文字にした名前、
  * 下記では "messages" という名前になります。
