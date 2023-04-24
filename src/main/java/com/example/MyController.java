@@ -25,9 +25,9 @@ import lombok.NoArgsConstructor;
  * よって、force=true指定で該当フィールドを0かfalseかnullで初期化する処理を追加します。
  * 
  * このクラスはJAX-RSのリソースクラスに似ています。
- * @Path はこのクラス全体が扱うURLのパスで、
- * @ApplicationPath からの相対パスとなります。
- * @Path はJAX-RSのアノテーションです。
+ * @Path はこのクラス全体が扱うURLのパスで、JAX-RSのアノテーションです。
+ * これは @ApplicationPath からの相対パスとなります。
+ * パスの先頭の/と末尾の/はあってもなくても同じです。
  */
 @Controller
 @RequestScoped
@@ -48,16 +48,19 @@ public class MyController {
 	/**
 	 * @GET や @POST アノテーションは、メソッドが処理するHTTPリクエストメソッドを特定する
 	 * リクエストメソッド指示子（Request method designator：JAX-RSのアノテーションです）
-	 * @Path はこのクラス全体が扱うURLのパスからの相対パスです。
+	 * 
+	 * @Path がないため、このメソッドはクラス全体が扱うURLのパスを扱います。
 	 */
 	@GET
-	@Path("")
 	public String home() {
 		// ViewのJSPファイル名を返します。
 		// JSPファイルはデフォルトでは /webapp/WEB-INF/views の下に置きます。
 		return "index.jsp";
 	}
-
+	
+	/**
+	 * @Path はこのクラス全体が扱うURLのパスからの相対パスです。
+	 */
 	@GET
 	@Path("list")
 	public String getMessage() {
