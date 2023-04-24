@@ -4,7 +4,7 @@ import com.example.model.LoginUser;
 import com.example.model.MessageDTO;
 import com.example.model.Messages;
 
-import jakarta.enterprise.context.ApplicationScoped;
+import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.mvc.Controller;
 import jakarta.ws.rs.BeanParam;
@@ -14,29 +14,25 @@ import jakarta.ws.rs.Path;
 import lombok.NoArgsConstructor;
 
 /**
- * Jakarta MVCのコンロトーラークラスです。@Controllerアノテーションを付けましょう。
+ * Jakarta MVCのコンロトーラクラスです。@Controllerアノテーションを付けましょう。
  * 
- * CDIのデフォルト設定では、
- * コントロールクラスにはスコープアノテーションが必須です。
- * （つまりCDI管理Beanにする必要があります。下記では@ApplicationScoped）
- * 
- * JAX-RSではリソースクラスに相当します。
- * @Path はこのクラス全体が扱うURLのパスで、
- * @ApplicationPath からの相対パスとなります。
- * @Path はJAX-RSのアノテーションです。
+ * コントローラクラスはCDI管理Beanであることが必須で、必ず@RequestScopedを付けます。
  * 
  * CDI管理Beanには引数のないコンストラクタが必須なので、
  * Lombokの@NoArgsConstructorで空っぽのコンストラクタを作成します。
- * ただし、このクラスは初期化してないfinalフィールドを持つため、
- * このままだとフィールドが初期化されない可能性のためコンパイルエラーとなります。
- * force=true指定で強制的に該当フィールドを0かfalseかnullで初期化する処理を追加します。
- * （ここまでやらせておいて、実際には@Inject付きのコンストラクタが呼ばれるため、
- *  こちらは呼ばれないコンストラクタです。）
+ * ただし、このクラスは宣言時に初期化してないfinalフィールドを持つため、
+ * このままだとフィールドが初期化されない可能性があってコンパイルエラーとなります。
+ * よって、force=true指定で該当フィールドを0かfalseかnullで初期化する処理を追加します。
+ * 
+ * このクラスはJAX-RSのリソースクラスに似ています。
+ * @Path はこのクラス全体が扱うURLのパスで、
+ * @ApplicationPath からの相対パスとなります。
+ * @Path はJAX-RSのアノテーションです。
  */
-@ApplicationScoped
 @Controller
-@Path("")
+@RequestScoped
 @NoArgsConstructor(force = true)
+@Path("/")
 public class MyController {
 	private final Messages messages;
 
@@ -50,9 +46,9 @@ public class MyController {
 	}
 
 	/**
-	 * @GET や @POST アノテーションは、メソッドが処理するHTTPリクエストメソッドを特定します。
-	 * （JAX-RSのアノテーションです）
-	 * @Path はクラス全体の @Path からの相対パスです。
+	 * @GET や @POST アノテーションは、メソッドが処理するHTTPリクエストメソッドを特定する
+	 * リクエストメソッド指示子（Request method designator：JAX-RSのアノテーションです）
+	 * @Path はこのクラス全体が扱うURLのパスからの相対パスです。
 	 */
 	@GET
 	@Path("")
@@ -86,5 +82,4 @@ public class MyController {
 		// リダイレクトは "redirect:リダイレクト先のパス"
 		return "redirect:list";
 	}
-
 }
