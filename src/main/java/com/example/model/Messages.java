@@ -36,8 +36,9 @@ public class Messages extends ArrayList<MessageDTO> implements Serializable {
 
 	/**
 	 * コンストラクタが呼ばれた直後に実行する処理。
+	 * 
 	 * @PostConstruct アノテーションを付けて定義します。
-	 * MessagesクラスはApplication Scopeであるため、
+	 * Messagesクラスはアプリケーションスコープであるため、
 	 * 生成されるのはアプリが起動したときの1度きりですから、
 	 * コンストラクタの中に処理を書いても結果は同じです。
 	 * 他のスコープだと動作は変わります。
@@ -59,8 +60,9 @@ public class Messages extends ArrayList<MessageDTO> implements Serializable {
 	
 	/**
 	 * このインスタンスが破棄される直前に実行する処理。
+	 * 
 	 * @PreDestroy アノテーションを付けて定義します。
-	 * MessagesクラスはApplication Scopeであるため、
+	 * Messagesクラスはアプリケーションスコープであるため、
 	 * 破棄されるのはアプリが終了するときです。
 	 * 
 	 * リスト（this、つまり自分自身）の内容をJsonbでJSON文字列へ変換して、
