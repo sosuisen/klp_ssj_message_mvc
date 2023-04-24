@@ -39,14 +39,14 @@ public class MyController {
 
 	private final LoginUser loginUser;
 
-	// 自作クラスの場合、コンストラクタインジェクションを用いるのが定石です。
+	// @Injectはコンストラクタインジェクションを用いるのが定石です。
 	@Inject
 	public MyController(Messages messages, LoginUser loginUser) {
 		this.messages = messages;
 		this.loginUser = loginUser;
 	}
 
-	// ModelsはViewであるJSP側へオブジェクトを渡すためのJakarta MVCの仕組み。
+	// ModelsはコントローラクラスのメソッドからViewであるJSP側へオブジェクトを渡すためのJakarta MVCの仕組み。
 	// これは特にデメリットがないのでフィールドインジェクションでよいです。
 	@Inject
 	private Models models;
