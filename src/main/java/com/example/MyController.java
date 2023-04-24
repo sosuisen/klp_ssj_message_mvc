@@ -7,6 +7,7 @@ import com.example.model.Messages;
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
 import jakarta.mvc.Controller;
+import jakarta.mvc.Models;
 import jakarta.ws.rs.BeanParam;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.POST;
@@ -38,12 +39,17 @@ public class MyController {
 
 	private final LoginUser loginUser;
 
-	// コンストラクタインジェクションを用います。
+	// 自作クラスの場合、コンストラクタインジェクションを用いるのが定石です。
 	@Inject
 	public MyController(Messages messages, LoginUser loginUser) {
 		this.messages = messages;
 		this.loginUser = loginUser;
 	}
+
+	// ModelsはViewであるJSP側へオブジェクトを渡すためのJakarta MVCの仕組み。
+	// これはフィールドインジェクションでよいです。
+	@Inject
+	private Models models;
 
 	/**
 	 * @GET や @POST アノテーションは、メソッドが処理するHTTPリクエストメソッドを特定する
@@ -53,11 +59,14 @@ public class MyController {
 	 */
 	@GET
 	public String home() {
-		// ViewのJSPファイル名を返します。
+		// ViewとなるJSP側へ名前を付けてオブジェクトを渡すことができます。
+		models.put("appName", "メッセージアプリ");
+
+		// JSPファイル名を返します。
 		// JSPファイルはデフォルトでは /webapp/WEB-INF/views の下に置きます。
 		return "index.jsp";
 	}
-	
+
 	/**
 	 * @Path はこのクラス全体が扱うURLのパスからの相対パスです。
 	 */

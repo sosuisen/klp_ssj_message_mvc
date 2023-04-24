@@ -4,10 +4,10 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>メッセージアプリ</title>
+<title>${appName}</title>
 </head>
 <body>
-	<p>メッセージアプリへようこそ！</p>
+	<p>${appName}へようこそ！</p>
 	<p>
 		<a href="list">利用開始</a>
 	</p>
