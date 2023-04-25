@@ -77,4 +77,16 @@ public class MyController {
 		messages.clear();
 		return "redirect:list";
 	}
+	
+	@GET
+	@Path("login")
+	public String getLogin() {
+		return "login.jsp";
+	}
+
+	@POST
+	@Path("login")
+	public String postLogin() {
+		return "redirect:list";
+	}
 }

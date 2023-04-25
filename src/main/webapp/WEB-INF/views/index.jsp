@@ -10,7 +10,7 @@
 <body>
 	<p>${appName}へようこそ！</p>
 	<p>
-		<a href="${mvc.basePath}/list">利用開始</a>
+		<a href="${mvc.basePath}/login">ログイン</a>
 	</p>
 </body>
 </html>

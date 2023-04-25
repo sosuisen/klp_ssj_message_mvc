@@ -24,6 +24,9 @@
 		<div>${mes.name}:${mes.message}</div>
 	</c:forEach>
 	<p>
+		<a href="${mvc.basePath}/login">ログアウト</a>
+	</p>
+	<p>
 		<a href="${mvc.basePath}/">ホームへ戻る</a>
 	</p>
 </body>
