@@ -23,5 +23,8 @@
 	<c:forEach var="mes" items="${messages}">
 		<div>${mes.name}:${mes.message}</div>
 	</c:forEach>
+	<p>
+		<a href="${mvc.basePath}/">ホームへ戻る</a>
+	</p>
 </body>
 </html>
