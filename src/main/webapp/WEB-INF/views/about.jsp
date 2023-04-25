@@ -5,11 +5,9 @@
 <head>
 <meta charset="UTF-8">
 <title>${appName}</title>
+<link href="../app.css" rel="stylesheet">
 </head>
 <body>
-	<p>${appName}へようこそ！</p>
-	<p>
-		<a href="list">利用開始</a>
-	</p>
+	<p>これは「${appName}」です！</p>
 </body>
 </html>
