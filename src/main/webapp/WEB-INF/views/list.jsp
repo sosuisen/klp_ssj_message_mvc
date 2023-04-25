@@ -5,6 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link href="${mvc.basePath}/../app.css" rel="stylesheet">
 <title>メッセージの累積</title>
 </head>
 <body>

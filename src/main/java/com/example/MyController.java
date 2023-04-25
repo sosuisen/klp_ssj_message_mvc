@@ -24,11 +24,6 @@ import lombok.NoArgsConstructor;
  * ただし、このクラスは宣言時に初期化してないfinalフィールドを持つため、
  * このままだとフィールドが初期化されない可能性があってコンパイルエラーとなります。
  * よって、force=true指定で該当フィールドを0かfalseかnullで初期化する処理を追加します。
- * 
- * このクラスはJAX-RSのリソースクラスに似ています。
- * @Path はこのクラス全体が扱うURLのパスで、JAX-RSのアノテーションです。
- * これは @ApplicationPath からの相対パスとなります。
- * パスの先頭の/と末尾の/はあってもなくても同じです。
  */
 @Controller
 @RequestScoped
@@ -46,30 +41,18 @@ public class MyController {
 		this.loginUser = loginUser;
 	}
 
-	// ModelsはコントローラクラスのメソッドからViewであるJSP側へオブジェクトを渡すためのJakarta MVCの仕組み。
-	// これは特にデメリットがないのでフィールドインジェクションでよいです。
 	@Inject
 	private Models models;
 
 	/**
-	 * @GET や @POST アノテーションは、メソッドが処理するHTTPリクエストメソッドを特定する
-	 * リクエストメソッド指示子（Request method designator：JAX-RSのアノテーションです）
-	 * 
 	 * @Path がないため、このメソッドはクラス全体が扱うURLのパスを扱います。
 	 */
 	@GET
 	public String home() {
-		// ViewとなるJSP側へ名前を付けてオブジェクトを渡すことができます。
 		models.put("appName", "メッセージアプリ");
-
-		// JSPファイル名を返します。
-		// JSPファイルはデフォルトでは /webapp/WEB-INF/views の下に置きます。
 		return "index.jsp";
 	}
 
-	/**
-	 * @Path はこのクラス全体が扱うURLのパスからの相対パスです。
-	 */
 	@GET
 	@Path("list")
 	public String getMessage() {
@@ -84,14 +67,14 @@ public class MyController {
 	@Path("list")
 	public String postMessage(@BeanParam MessageDTO mes) {
 		messages.add(mes);
-		return "list.jsp";
+		// リダイレクトは "redirect:リダイレクト先のパス"
+		return "redirect:list";
 	}
 
 	@GET
 	@Path("clear")
 	public String clearMessage() {
 		messages.clear();
-		// リダイレクトは "redirect:リダイレクト先のパス"
 		return "redirect:list";
 	}
 }

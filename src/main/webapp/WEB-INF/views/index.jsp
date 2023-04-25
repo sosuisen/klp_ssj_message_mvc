@@ -4,12 +4,13 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link href="${mvc.basePath}/../app.css" rel="stylesheet">
 <title>${appName}</title>
 </head>
 <body>
 	<p>${appName}へようこそ！</p>
 	<p>
-		<a href="list">利用開始</a>
+		<a href="${mvc.basePath}/list">利用開始</a>
 	</p>
 </body>
 </html>
