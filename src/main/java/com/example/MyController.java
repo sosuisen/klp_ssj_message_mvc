@@ -29,7 +29,6 @@ public class MyController {
 	/**
 	 *  Modelsはコントローラクラスのメソッドから、
 	 *  ViewであるJSP側へオブジェクトを渡すためのJakarta MVCの仕組み。
-	 *  Modelsはフィールドインジェクションにしてデメリットはないです。
 	 */
 	@Inject
 	private Models models;
