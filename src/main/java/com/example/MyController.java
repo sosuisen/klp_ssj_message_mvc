@@ -34,7 +34,7 @@ public class MyController {
 
 	private final LoginUser loginUser;
 
-	// @Injectはコンストラクタインジェクションを用いるのが定石です。
+	// 自作CDI Beanの@Injectはコンストラクタインジェクションを用いるのが定石です。
 	@Inject
 	public MyController(Messages messages, LoginUser loginUser) {
 		this.messages = messages;
