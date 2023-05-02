@@ -8,8 +8,8 @@ import lombok.Data;
  * 次の3か所で利用されます。
  * 1) list.jspで表示したフォームからPOSTされたデータを、
  *   MyControllerのpostMessageメソッドの@BeanParamへ注入。
- * 2) posetMessageメソッド内でmessagesに追加。
- * 3) list.jspでmessagesから取り出されて表示。
+ * 2) postMessageメソッド内でmessagesModelに追加。
+ * 3) list.jspでmessagesModelから取り出されて表示。
  * 
  * @BeanParam を用いてデータを渡すためには
  * list.jspのフォーム内でのinput要素のnameと
