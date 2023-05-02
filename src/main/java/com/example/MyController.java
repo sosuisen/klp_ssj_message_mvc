@@ -1,8 +1,8 @@
 package com.example;
 
-import com.example.model.LoginUser;
+import com.example.model.LoginUserModel;
 import com.example.model.MessageDTO;
-import com.example.model.Messages;
+import com.example.model.MessagesModel;
 
 import jakarta.enterprise.context.RequestScoped;
 import jakarta.inject.Inject;
@@ -30,15 +30,15 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(force = true)
 @Path("/")
 public class MyController {
-	private final Messages messages;
+	private final MessagesModel messagesModel;
 
-	private final LoginUser loginUser;
+	private final LoginUserModel loginUserModel;
 
 	// 自作CDI Beanの@Injectはコンストラクタインジェクションを用いるのが定石です。
 	@Inject
-	public MyController(Messages messages, LoginUser loginUser) {
-		this.messages = messages;
-		this.loginUser = loginUser;
+	public MyController(MessagesModel messagesModel, LoginUserModel loginUserModel) {
+		this.messagesModel = messagesModel;
+		this.loginUserModel = loginUserModel;
 	}
 
 	@Inject
@@ -58,7 +58,7 @@ public class MyController {
 	public String getMessage() {
 		// 今回はここで強制的にユーザ名をセットしておきます。
 		// 今後は、ログイン処理を追加し、その時にセットする必要があります。
-		this.loginUser.setName("鴨川三条");
+		this.loginUserModel.setName("鴨川三条");
 
 		return "list.jsp";
 	}
@@ -66,7 +66,7 @@ public class MyController {
 	@POST
 	@Path("list")
 	public String postMessage(@BeanParam MessageDTO mes) {
-		messages.add(mes);
+		messagesModel.add(mes);
 		// リダイレクトは "redirect:リダイレクト先のパス"
 		return "redirect:list";
 	}
@@ -74,7 +74,7 @@ public class MyController {
 	@GET
 	@Path("clear")
 	public String clearMessage() {
-		messages.clear();
+		messagesModel.clear();
 		return "redirect:list";
 	}
 }
