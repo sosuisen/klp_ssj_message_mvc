@@ -6,15 +6,11 @@ import jakarta.mvc.Controller;
 import jakarta.mvc.Models;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
-import lombok.NoArgsConstructor;
 
 /**
  * Jakarta MVCのコンロトーラクラスです。@Controllerアノテーションを付けましょう。
  * 
  * コントローラクラスはCDI beanであることが必須で、必ず@RequestScopedを付けます。
- * 
- * CDI beanには引数のないコンストラクタが必須なので、
- * Lombokの@NoArgsConstructorで空っぽのコンストラクタを作成します。
  * 
  * @Path はこのクラス全体が扱うURLのパスで、JAX-RSのアノテーションです。
  * これは @ApplicationPath からの相対パスとなります。
@@ -22,7 +18,6 @@ import lombok.NoArgsConstructor;
  */
 @Controller
 @RequestScoped
-@NoArgsConstructor
 @Path("/")
 public class MyController {
 
