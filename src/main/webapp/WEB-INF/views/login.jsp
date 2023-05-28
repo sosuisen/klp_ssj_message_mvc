@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <link href="${mvc.basePath}/../app.css" rel="stylesheet">
-<title>ログインページ</title>
+<title>ログイン画面</title>
 </head>
 <body>
 	<form action="login" method="POST">
