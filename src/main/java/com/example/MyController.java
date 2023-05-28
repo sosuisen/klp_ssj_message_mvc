@@ -30,18 +30,18 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor(force = true)
 @Path("/")
 public class MyController {
+	private final Models models;
+	
 	private final MessagesModel messagesModel;
 
 	private final LoginUserModel loginUserModel;
 
 	@Inject
-	public MyController(MessagesModel messagesModel, LoginUserModel loginUserModel) {
+	public MyController(Models models, MessagesModel messagesModel, LoginUserModel loginUserModel) {
+		this.models = models;
 		this.messagesModel = messagesModel;
 		this.loginUserModel = loginUserModel;
 	}
-
-	@Inject
-	private Models models;
 
 	/**
 	 * @Path がないため、このメソッドはクラス全体が扱うURLのパスを扱います。
