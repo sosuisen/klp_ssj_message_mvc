@@ -10,12 +10,12 @@
 </head>
 <body>
 	${loginUserModel.name}さん、こんにちは！
-	<form action="list" method="POST">
+	<form action="${mvc.basePath}/list" method="POST">
 		投稿者名：<input type="text" name="name"> メッセージ：<input type="text"
 			name="message">
 		<button>送信</button>
 	</form>
-	<form action="clear" method="GET">
+	<form action="${mvc.basePath}/clear" method="GET">
 		<button>Clear</button>
 	</form>
 	<hr>
