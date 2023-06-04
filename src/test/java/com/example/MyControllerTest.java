@@ -40,7 +40,7 @@ public class MyControllerTest {
 		var loginUserModel = new LoginUserModel();
 		var myController = new MyController(new MyModels(), new MessagesModel(), loginUserModel);
 		myController.getMessage();
-		// Assertions.assertEquals(loginUserModel.getName(), "鴨川三条");
-		Assertions.assertEquals(loginUserModel.getName(), "宇治川三条");
+		Assertions.assertEquals("鴨川三条", loginUserModel.getName());
+		// Assertions.assertEquals("宇治川三条", loginUserModel.getName() );
 	}
 }
