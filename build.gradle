@@ -30,6 +30,21 @@ dependencies {
 	implementation 'jakarta.mvc:jakarta.mvc-api:2.1.0'
 	implementation 'org.eclipse.krazo:krazo-core:3.0.1'
 	implementation 'org.eclipse.krazo:krazo-jersey:3.0.1'
+
+	testImplementation 'org.junit.jupiter:junit-jupiter:5.9.3'
+}
+
+test {
+	useJUnitPlatform()
+	
+	testLogging {
+    	// テスト時の標準出力と標準エラー出力を表示する
+    	showStandardStreams true
+    	// イベントを出力する (TestLogEvent)
+    	events 'started', 'skipped', 'passed', 'failed'
+	    // 例外発生時の出力設定 (TestExceptionFormat)
+	    exceptionFormat 'full'
+  	}
 }
 
 payaraMicro {
