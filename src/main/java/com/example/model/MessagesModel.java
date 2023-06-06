@@ -1,6 +1,5 @@
 package com.example.model;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 
 import jakarta.enterprise.context.ApplicationScoped;
@@ -23,5 +22,5 @@ import jakarta.inject.Named;
  */
 @ApplicationScoped
 @Named
-public class MessagesModel extends ArrayList<MessageDTO> implements Serializable {
+public class MessagesModel extends ArrayList<MessageDTO> {
 }
